@@ -8,10 +8,25 @@ function CounterGroup(props) {
     const counters = new Array(props.size).fill(Date.now());
     setCounters(counters);
   }, [props.size]);
+
+  function increase() {
+    props.increase();
+  }
+
+  function decrease() {
+    props.decrease();
+  }
+
   return (
     <>
       {counters.map((item, index) => {
-        return <Counter key={item + index}></Counter>;
+        return (
+          <Counter
+            key={item + index}
+            increase={increase}
+            decrease={decrease}
+          ></Counter>
+        );
       })}
     </>
   );

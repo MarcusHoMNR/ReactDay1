@@ -1,15 +1,18 @@
 import { useState } from "react";
 
-function Counter() {
+function Counter(props) {
   const [number, setNumber] = useState(0);
 
   function increase() {
     setNumber(number + 1);
+    props.increase();
   }
 
   function decrease() {
     setNumber(number - 1);
+    props.decrease();
   }
+
   return (
     <div>
       <button onClick={increase}>+</button>

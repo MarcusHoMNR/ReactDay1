@@ -5,9 +5,19 @@ import CounterSizeGenerator from "./CounterSizeGenerator";
 
 function MultiCounter() {
   const [size, setSize] = useState(0);
+  const [sum, setSum] = useState(0);
 
   function updateCounterSize(size) {
     setSize(size);
+    setSum(0);
+  }
+
+  function increase() {
+    setSum(sum + 1);
+  }
+
+  function decrease() {
+    setSum(sum - 1);
   }
 
   return (
@@ -15,7 +25,12 @@ function MultiCounter() {
       <CounterSizeGenerator
         updateSize={updateCounterSize}
       ></CounterSizeGenerator>
-      <CounterGroup size={size}></CounterGroup>
+      <CounterGroupSum sum={sum}></CounterGroupSum>
+      <CounterGroup
+        size={size}
+        increase={increase}
+        decrease={decrease}
+      ></CounterGroup>
     </>
   );
 }
