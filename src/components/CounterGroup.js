@@ -9,24 +9,10 @@ function CounterGroup(props) {
     setCounters(counters);
   }, [props.size]);
 
-  function increase() {
-    props.increase();
-  }
-
-  function decrease() {
-    props.decrease();
-  }
-
   return (
     <>
       {counters.map((item, index) => {
-        return (
-          <Counter
-            key={item + index}
-            increase={increase}
-            decrease={decrease}
-          ></Counter>
-        );
+        return <Counter key={item + index}></Counter>;
       })}
     </>
   );

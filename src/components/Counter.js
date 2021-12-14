@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { UPDATE_SUM } from "../constant/constant";
 
-function Counter(props) {
+function Counter() {
   const [number, setNumber] = useState(0);
   const dispatch = useDispatch();
 

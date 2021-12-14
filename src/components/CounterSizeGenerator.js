@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { UPDATE_SIZE, UPDATE_SUM } from "../constant/constant";
+import { UPDATE_SIZE, RESET_SUM } from "../constant/constant";
 
 function CounterSizeGenerator(props) {
   const [size, setSize] = useState(0);
   const dispatch = useDispatch();
   function handleChangeSize(event) {
-    var updateSize;
+    var inputSize;
 
     if (
       !isNaN(parseInt(event.target.value)) &&
@@ -14,15 +14,19 @@ function CounterSizeGenerator(props) {
       parseInt(event.target.value) <= 99
     ) {
       setSize(parseInt(event.target.value));
-      updateSize = parseInt(event.target.value);
+      inputSize = parseInt(event.target.value);
     } else {
       setSize(0);
-      updateSize = 0;
+      inputSize = 0;
     }
 
     dispatch({
       type: UPDATE_SIZE,
-      payload: updateSize,
+      payload: inputSize,
+    });
+
+    dispatch({
+      type: RESET_SUM,
     });
   }
 

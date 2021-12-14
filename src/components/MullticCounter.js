@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import CounterGroup from "./CounterGroup";
 import CounterGroupSum from "./CounterGroupSum";
