@@ -1,28 +1,25 @@
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function CounterSizeGenerator(props) {
-  const [size, setSize] = useState(0);
-
+  const dispatch = useDispatch();
   function handleChangeSize(event) {
-    if (isNaN(parseInt(event.target.value))) {
-      setSize(0);
-      props.updateSize(0);
-      return;
+    var updateSize;
+
+    if (
+      isNaN(parseInt(event.target.value)) ||
+      parseInt(event.target.value) < 0
+    ) {
+      updateSize = 0;
+    } else if (parseInt(event.target.value) > 99) {
+      updateSize = 99;
+    } else {
+      updateSize = parseInt(event.target.value);
     }
 
-    if (parseInt(event.target.value) < 0) {
-      setSize(0);
-      props.updateSize(0);
-      return;
-    }
-
-    if (parseInt(event.target.value) > 99) {
-      setSize(99);
-      props.updateSize(99);
-      return;
-    }
-    setSize(parseInt(event.target.value));
-    props.updateSize(parseInt(event.target.value));
+    dispatch({
+      type: "counter/updateSize",
+      payload: updateSize,
+    });
   }
 
   return (
