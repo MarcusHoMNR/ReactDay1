@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import { UPDATE_SIZE } from "../constant/constant";
 
 function CounterSizeGenerator(props) {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function CounterSizeGenerator(props) {
     }
 
     dispatch({
-      type: "counter/updateSize",
+      type: UPDATE_SIZE,
       payload: updateSize,
     });
   }
