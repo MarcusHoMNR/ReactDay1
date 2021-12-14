@@ -1,9 +1,13 @@
-import { UPDATE_SIZE } from "../constant/constant";
+import { UPDATE_SIZE, UPDATE_SUM } from "../constant/constant";
 
-const counterReducer = (state = { size: 0 }, action) => {
+const initState = { size: 0, sum: 0 };
+
+const counterReducer = (state = initState, action) => {
   switch (action.type) {
     case UPDATE_SIZE:
       return { ...state, size: action.payload };
+    case UPDATE_SUM:
+      return { ...state, sum: state.sum + action.payload };
     default:
       return state;
   }

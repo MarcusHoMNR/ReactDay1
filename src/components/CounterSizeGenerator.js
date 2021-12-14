@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { UPDATE_SIZE } from "../constant/constant";
+import { UPDATE_SIZE, UPDATE_SUM } from "../constant/constant";
 
 function CounterSizeGenerator(props) {
   const [size, setSize] = useState(0);
